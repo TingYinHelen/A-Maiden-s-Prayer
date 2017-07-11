@@ -8,7 +8,11 @@ import VueResource from 'vue-resource';
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
-Vue.http.post('/api/test', {content: '大妹最可爱'}).then(res=>{
+Vue.http.post('/api/test', JSON.stringify({'content': '大妹最可爱'}), {
+						contentType: 'application/json',
+						dataType: 'json',
+						emulateJSON : true
+					}).then(res=>{
   console.log(res)
 })
 
