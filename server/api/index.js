@@ -1,5 +1,5 @@
-const test = require('./test.js')
+const article = require('./article')
 
 module.exports = app => {
-  app.use(test)
+  app.use(article)
 }
