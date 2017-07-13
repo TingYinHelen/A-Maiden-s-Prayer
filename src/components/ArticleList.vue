@@ -1,10 +1,28 @@
 <template>
   <div class="">
-    article list
+    <ul>
+      <li v-for="item in articleList">{{item.title}}</li>
+    </ul>
   </div>
 </template>
 <script>
   export default{
-    name: 'ArticleList'
+    name: 'ArticleList',
+    data(){
+      return {
+        articleList: []
+      }
+    },
+    created(){
+      this.getArticleList()
+    },
+    methods: {
+      getArticleList(){
+        this.$http.get('/api/articleList')
+            .then(res=>{
+              console.log(res)
+            })
+      }
+    }
   }
 </script>
