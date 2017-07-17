@@ -1,11 +1,18 @@
 <template>
-  <div>
-    Home
-    <div class="">
-      <router-link to="ArticleList">回到首页</router-link>
-      <router-link to="Create">新建文章</router-link>
-    </div>
+  <div class="fairy-container">
+    <header>
+      <div class="">
+        <h4></h4>
+      </div>
+      <nav>
+        
+      </nav>
+      <div class="">
+        
+      </div>
+    </header>
     <router-view></router-view>
+    <footer></footer>
   </div>
 </template>
 <script>

@@ -10,11 +10,11 @@ export default new Router({
   routes: [
     // { path: '', redirect: '/'},
     { path: '/', name: 'Home', component: Home,
-      children: [
-        { path: '', redirect: {name: 'ArticleList'}},
-        { path: 'ArticleList', name: 'ArticleList', component: ArticleList},
-        { path: 'Create', name: 'Create', component: Create},
-      ]
+      // children: [
+      //   { path: '', redirect: {name: 'ArticleList'}},
+      //   { path: 'ArticleList', name: 'ArticleList', component: ArticleList},
+      //   { path: 'Create', name: 'Create', component: Create},
+      // ]
     },
   ]
 })
