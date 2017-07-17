@@ -8,6 +8,16 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'helen';
+  src: url('fonts/BubblegumSans-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  font-family: "helen";
+  /*font-size: 12px;*/
+}
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
