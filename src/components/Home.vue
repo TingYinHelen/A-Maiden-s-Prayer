@@ -6,8 +6,8 @@
           <h4>Fairy</h4>
           <section class="">
             <template>
-              <a href="javascript:;">Sign in</a>
-              <a href="javascript:;">Sign Up</a>
+              <router-link to="/SignIn">Sign In</router-link>
+              <router-link to="/SignUp">Sign Up</router-link>
             </template>
             <!-- <template>
               <div class="avatar"></div>
@@ -22,7 +22,7 @@
       <div class="fairy-nav-bottom"></div>
     </header>
     <router-view></router-view>
-    <footer></footer>
+    <footer class="fairy-footer"></footer>
   </div>
 </template>
 <script>

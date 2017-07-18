@@ -4,6 +4,8 @@ import Home from '@/components/Home'
 import ArticleList  from '@/components/ArticleList'
 import BlogDetail from '@/components/BlogDetail'
 import Create from '@/components/Create'
+import SignIn from '@/components/SignIn'
+import SignUp from '@/components/SignUp'
 
 Vue.use(Router)
 
@@ -18,5 +20,7 @@ export default new Router({
         { path: 'Create', name: 'Create', component: Create},
       ]
     },
+    { path: '/SignIn', name: 'SignIn', component: SignIn },
+    { path: '/SignUp', name: 'SignUp', component: SignUp },
   ]
 })

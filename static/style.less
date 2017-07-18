@@ -2,6 +2,7 @@
    margin:0;
    padding:0;
    font-family: 'microsoft yahei',Verdana,Arial,Helvetica,sans-serif;
+   -webkit-text-size-adjust:none;
 }
 a,a:focus{ 
   text-decoration:none;
@@ -9,6 +10,12 @@ a,a:focus{
   cursor: pointer;
 }
 input,select{ outline: none;}
+ul,li,ol{ list-style: none; margin-bottom: 0; }
+.clearfix:after{
+  content: '';
+  display: table;
+  clear: both;
+}
 .fairy-header{
   background: #EE6FA1;
   a{
@@ -37,6 +44,14 @@ input,select{ outline: none;}
     font-weight: bold;
     font-size: 14px;
   }
+}
+.fairy-nav-bottom,.fairy-footer{
+  height: 51px;
+  margin-bottom: 20px;
+  background: url(../static/images/scallop@2x.png);
+}
+.fairy-footer{
+  margin-top: 20px;
 }
 /*
 *@ArticleList.vue
@@ -113,6 +128,49 @@ input,select{ outline: none;}
         width: 100%;
         margin: 20px 0;
       }
+    }
+  }
+}
+/*
+*@SignIn.vue
+*
+*
+*/
+.fariy-sign-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%); 
+  h4{
+    color: #EE6FA1;
+    font-size: 22px;
+    margin-bottom: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .el-form{
+    width: 300px;
+    padding: 30px;
+    border: 1px dashed #F8C6DA;
+    label{
+      font-weight: bolder;
+      color: #666;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 20px;
+    }
+    >div{
+      margin-bottom: 20px;
+    }
+    .el-input__inner{
+      height: 35px;
+    }
+    .el-button{
+      width: 100%;
+      margin-top: 20px;
+      background: #F8C6DA;
+      border: 0;
+      color: #fff;
     }
   }
 }
