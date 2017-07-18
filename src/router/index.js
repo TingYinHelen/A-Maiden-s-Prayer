@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import ArticleList  from '@/components/ArticleList'
 import BlogDetail from '@/components/BlogDetail'
-import Create from '@/components/Create'
+import Editor from '@/components/Editor'
 import SignIn from '@/components/SignIn'
 import SignUp from '@/components/SignUp'
 
@@ -17,7 +17,8 @@ export default new Router({
         { path: '', redirect: {name: 'ArticleList'}},
         { path: 'ArticleList', name: 'ArticleList', component: ArticleList},
         { path: 'BlogDetail', name: 'BlogDetail', component: BlogDetail},
-        { path: 'Create', name: 'Create', component: Create},
+        { path: 'Personal', name: 'Personal', component: ArticleList},
+        { path: 'Editor', name: 'Editor', component: Editor},
       ]
     },
     { path: '/SignIn', name: 'SignIn', component: SignIn },

@@ -11,6 +11,10 @@
           <label>password:</label>
           <el-input type="password"></el-input>
         </div>
+        <div class="">
+          <label>confirm password:</label>
+          <el-input type="password"></el-input>
+        </div>
         <el-button>Sign In</el-button>
       </el-form>
     </div>
