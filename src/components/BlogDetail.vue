@@ -112,6 +112,11 @@
       color: #666;
       font-size: 14px;
     }
+    .el-button{
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #666;
+    }
     >li{
       display: flex;
       justify-content: space-between;
