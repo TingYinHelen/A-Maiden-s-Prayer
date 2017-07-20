@@ -14,7 +14,7 @@
     },
     methods: {
       toPersonal(){
-        this.$router.push('Personal')
+        this.$router.push('personal')
       }
     }
   }

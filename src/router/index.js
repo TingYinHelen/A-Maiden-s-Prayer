@@ -10,16 +10,19 @@ import SignUp from '@/components/SignUp'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
-    { path: '/', redirect: 'home', component: Index,
+    { path: '/', name: 'Index', redirect: {name: 'home'}, component: Index,
       children: [
-        {path: 'home', name: 'home', component: ArticleList},
-        {path: 'personal', name: 'personal', component: ArticleList},
-        {path: 'blogdetail', name: 'blogdetail', component: BlogDetail},
-        {path: 'editor', name: 'editor', component: BlogDetail},
+        { path: 'home', name: 'home', component: ArticleList},
+        { path: 'blogdetail', name: 'blogdetail', component: BlogDetail },
+        { path: 'personal/:userId?/:articleId?', name: 'personal', component: ArticleList, children: [
+          { path: 'editor', name: 'editor', component: Editor },
+        ]},
+        // {path: 'personal', name: 'personal', component: ArticleList},
       ]
     },
-    { path: '/SignIn', name: 'SignIn', component: SignIn },
-    { path: '/SignUp', name: 'SignUp', component: SignUp },
+    { path: '/signin', name: 'signin', component: SignIn },
+    { path: '/signup', name: 'signup', component: SignUp },
   ]
 })

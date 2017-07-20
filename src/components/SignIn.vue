@@ -26,14 +26,18 @@
     },
     methods: {
       backToHome(){
-        this.$router.push('/Home')
+        this.$router.push('home')
       },
       submitSignIn(){
         this.$http.post('/api/signin', {username: this.signInUsername, password: this.signInPassword})
           .then(res=>{
             const {status} = res
             if(status == 200){
-              this.$router.push({path: '/Home', query: {userId: res.body.id}})
+              window.localStorage.setItem('username',res.body.username)
+              window.localStorage.setItem('userId',res.body._id)
+              this.$router.push({name: 'personal', params: {userId: res.body.username}})
+            }else{
+              console.error('密码错误')
             }
           })
       }

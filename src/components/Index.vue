@@ -6,22 +6,22 @@
         <div class="fairy-center">
           <h4>Fairy</h4>
           <section class="header-right">
-            <!-- <template>
-              <router-link to="/SignIn">Sign In</router-link>
-              <router-link to="/SignUp">Sign Up</router-link>
-            </template> -->
-            <template>
+            <template v-if="!!userId">
               <div>
                 <Avatar :width="40"></Avatar>
               </div>
-              <router-link to="Editor" class="icon-quill"></router-link>
-              <!-- <span></span> -->
+              <router-link to="editor" class="icon-quill"></router-link>
             </template>
+            <template v-else>
+              <router-link to="/signin">Sign In</router-link>
+              <router-link to="/signup">Sign Up</router-link>
+            </template>
+            
           </section>
         </div>
       </div>
       <nav class="fairy-center fairy-nav">
-        <router-link to="/Home">Home</router-link>
+        <router-link to="/">Home</router-link>
       </nav>
       <div class="fairy-nav-bottom"></div>
     </header>
@@ -37,7 +37,7 @@
     },
     data(){
       return {
-        
+        userId: window.localStorage.getItem('userId')
       }
     }
   }

@@ -6,7 +6,7 @@
     <div class="article-content">
       <h4>{{item.title}}</h4>
       <article>{{item.content}}</article>
-      <router-link to="BlogDetail">More</router-link>
+      <router-link to="blogdetail">More</router-link>
     </div>
   </li>
 </template>
