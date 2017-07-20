@@ -1,14 +1,26 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const articleSchema = new Schema(
+//存储文章
+// const articleSchema = new Schema(
+//   {
+//     title: String,
+//     content: String
+//   },
+//   { versionKey: false }
+// )
+// const article = mongoose.model('article', articleSchema)
+
+//用户注册
+const UserSchema = new Schema(
   {
-    title: String,
-    content: String
-  },
-  { versionKey: false }
+    username: String,
+    password: String
+  }
 )
-const article = mongoose.model('article', articleSchema)
+const Models = {
+  User: mongoose.model('User', UserSchema)
+}
 
 mongoose.connect('mongodb://127.0.0.1/my-blog', {useMongoClient: true})
 
@@ -19,4 +31,5 @@ db.once('open', () => {
     console.log('The database has connected.')
 });
 
-module.exports = article
+
+module.exports = Models

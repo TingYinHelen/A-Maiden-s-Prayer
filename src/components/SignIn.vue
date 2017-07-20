@@ -5,13 +5,13 @@
       <el-form>
         <div class="">
           <label>username:</label>
-          <el-input></el-input>
+          <el-input v-model="signInUsername"></el-input>
         </div>
         <div class="">
           <label>password:</label>
-          <el-input type="password"></el-input>
+          <el-input type="password" v-model="signInPassword"></el-input>
         </div>
-        <el-button>Sign In</el-button>
+        <el-button @click="submitSignIn">Sign In</el-button>
       </el-form>
     </div>
   </div>
@@ -19,11 +19,23 @@
 <script>
   export default{
     data(){
-      return {}
+      return {
+        signInUsername: '',
+        signInPassword: '',
+      }
     },
     methods: {
       backToHome(){
         this.$router.push('/Home')
+      },
+      submitSignIn(){
+        this.$http.post('/api/signin', {username: this.signInUsername, password: this.signInPassword})
+          .then(res=>{
+            const {status} = res
+            if(status == 200){
+              this.$router.push({path: '/Home', query: {userId: res.body.id}})
+            }
+          })
       }
     }
   }

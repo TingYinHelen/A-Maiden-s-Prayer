@@ -34,6 +34,7 @@
       ArticleItem
     },
     created(){
+      
       // this.getArticleList()
     },
     methods: {
