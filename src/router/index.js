@@ -19,14 +19,6 @@ export default new Router({
         {path: 'editor', name: 'editor', component: BlogDetail},
       ]
     },
-    //   children: [
-    //     { path: '', redirect: {name: 'ArticleList'}},
-    //     { path: 'ArticleList', name: 'ArticleList', component: ArticleList},
-    //     { path: 'BlogDetail', name: 'BlogDetail', component: BlogDetail},
-    //     { path: 'Personal', name: 'Personal', component: ArticleList},
-    //     { path: 'Editor', name: 'Editor', component: Editor},
-    //   ]
-    // },
     { path: '/SignIn', name: 'SignIn', component: SignIn },
     { path: '/SignUp', name: 'SignUp', component: SignUp },
   ]
