@@ -12,17 +12,19 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', name: 'Index', redirect: {name: 'home'}, component: Index,
+    { path: '/signin', name: 'signin', component: SignIn },
+    { path: '/signup', name: 'signup', component: SignUp },
+    { path: '/', name: 'Index', component: Index,
       children: [
-        { path: 'home', name: 'home', component: ArticleList},
-        { path: 'blogdetail', name: 'blogdetail', component: BlogDetail },
-        { path: 'personal/:userId?/:articleId?', name: 'personal', component: ArticleList, children: [
-          { path: 'editor', name: 'editor', component: Editor },
-        ]},
+        { path: ':username?', name: 'home', component: ArticleList},
+        { path: ':article?', name: 'blogdetail', component: BlogDetail},
+        { path: ':username?/:article?', name: 'blogdetail', component: BlogDetail}
+        // { path: 'blogdetail', name: 'blogdetail', component: BlogDetail },
+        // { path: 'personal/:userId?/:articleId?', name: 'personal', component: ArticleList, children: [
+        //   { path: 'editor', name: 'editor', component: Editor },
+        // ]},
         // {path: 'personal', name: 'personal', component: ArticleList},
       ]
     },
-    { path: '/signin', name: 'signin', component: SignIn },
-    { path: '/signup', name: 'signup', component: SignUp },
   ]
 })

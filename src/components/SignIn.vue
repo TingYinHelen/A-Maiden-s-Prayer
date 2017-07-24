@@ -33,9 +33,10 @@
           .then(res=>{
             const {status} = res
             if(status == 200){
-              window.localStorage.setItem('username',res.body.username)
-              window.localStorage.setItem('userId',res.body._id)
-              this.$router.push({name: 'personal', params: {userId: res.body.username}})
+              this.$router.push({
+                path: res.body.username,
+                name: 'home',
+                params: { username: res.body.username}})
             }else{
               console.error('密码错误')
             }

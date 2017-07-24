@@ -6,7 +6,7 @@
         <div class="fairy-center">
           <h4>Fairy</h4>
           <section class="header-right">
-            <template v-if="!!userId">
+            <template v-if="$route.params.username">
               <div>
                 <Avatar :width="40"></Avatar>
               </div>
