@@ -33,6 +33,7 @@
           .then(res=>{
             const {status} = res
             if(status == 200){
+              localStorage.setItem('userName', res.body.username)
               this.$router.push({
                 path: res.body.username,
                 name: 'home',

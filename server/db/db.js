@@ -2,14 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 //存储文章
-// const articleSchema = new Schema(
-//   {
-//     title: String,
-//     content: String
-//   },
-//   { versionKey: false }
-// )
-// const article = mongoose.model('article', articleSchema)
+const ArticleSchema = new Schema(
+  {
+    title: String,
+    content: String
+  }
+)
 
 //用户注册
 const UserSchema = new Schema(
@@ -19,7 +17,8 @@ const UserSchema = new Schema(
   }
 )
 const Models = {
-  User: mongoose.model('User', UserSchema)
+  User: mongoose.model('User', UserSchema),
+  Article: mongoose.model('Article', ArticleSchema)
 }
 
 mongoose.connect('mongodb://127.0.0.1/my-blog', {useMongoClient: true})

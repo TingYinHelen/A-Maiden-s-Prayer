@@ -6,9 +6,10 @@
         <el-button @click="checkToView">View</el-button>
       </div>
       <div class="">
-        <el-button>Publish</el-button>
+        <el-button @click="submitAriticle">Publish</el-button>
       </div>
     </div>
+    <el-input class="fairy-editor-title" v-model="contentTitle"></el-input>
     <el-input type="textarea" v-if="isMarked" v-model="mdContent"></el-input>
     <div v-else class="fairy-preview" v-html="mdHtml"></div>
   </div>
@@ -39,7 +40,8 @@
     data(){
       return {
         isMarked: true,
-        mdContent: ''
+        mdContent: '',
+        contentTitle: '',
       }
     },
     computed: {
@@ -52,6 +54,17 @@
     methods: {
       checkToView(){
         this.isMarked = false
+      },
+      submitAriticle(){
+        const vm = this
+        this.$http.post('/api/createArticle', {title: this.contentTitle, content: this.mdContent})
+            .then(res=>{
+              if(res.status == 200){
+                const username = localStorage.getItem('userName')
+                const title = this.contentTitle
+                this.$router.push({path: `/${username}/${title}`})
+              }
+            })
       }
     }
   }
@@ -84,5 +97,8 @@
     color: #666;
     font-size: 14px;
     line-height: 25px;
+  }
+  .fairy-editor-title{
+    margin-bottom: 20px;
   }
 </style>

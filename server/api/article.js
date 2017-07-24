@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const article = require('../db/db')
+const db = require('../db/db')
 
 //新建文章
 router.post('/api/createArticle', (req, res)=>{
   const {title, content} = req.body
-  const articledb = new article({title, content})
-  articledb.save()
-  res.status(200).send('接收到数据')
+  // console.log(title, content)
+  new db.Article({title, content}).save()
+  res.status(200).send('save success!')
 })
 //获取文章列表
 router.get('/api/articleList', (req, res)=>{
