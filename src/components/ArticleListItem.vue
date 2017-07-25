@@ -1,12 +1,12 @@
 <template>
   <li class="article-item">
-    <a href="javascript:;" class="article-item-avatar">
+    <!-- <a href="javascript:;" class="article-item-avatar">
       <img :src="item.avatar" />
-    </a>
+    </a> -->
     <div class="article-content">
       <h4>{{item.title}}</h4>
       <article>{{item.content}}</article>
-      <a href="javascript:;" @click="toDetail(item.title)">More</a>
+      <a href="javascript:;" @click="toDetail(item._id)">More</a>
       <!-- :to="{path: item.title, params: {article: item.title}}" -->
     </div>
   </li>

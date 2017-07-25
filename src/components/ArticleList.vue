@@ -11,39 +11,23 @@
   export default{
     data(){
       return {
-        articleList: [
-          {
-            title: 'title', 
-            content: 'I have to give a little shoutout to these cupcake pops, too. It was these cuties that I first posted on the site in February of 2008 that unknowingly started a cake pop phenomenon.',
-            avatar: 'static/images/avatar.png'
-          },
-          {
-            title: 'title', 
-            content: 'I have to give a little shoutout to these cupcake pops, too. It was these cuties that I first posted on the site in February of 2008 that unknowingly started a cake pop phenomenon.',
-            avatar: 'static/images/avatar.png'
-          },
-          {
-            title: 'title', 
-            content: 'I have to give a little shoutout to these cupcake pops, too. It was these cuties that I first posted on the site in February of 2008 that unknowingly started a cake pop phenomenon.',
-            avatar: 'static/images/avatar.png'
-          },
-        ]
+        articleList: []
       }
     },
     components: {
       ArticleItem
     },
     created(){
-      
-      // this.getArticleList()
+      this.fetchData()
     },
     methods: {
-      // getArticleList(){
-      //   this.$http.get('/api/articleList')
-      //       .then(res=>{
-      //         console.log(res)
-      //       })
-      // }
+      fetchData(){
+        this.$http.get('/api/articleList').then(res=>{
+          if(res.status == 200){
+            Object.assign(this.$data, res.body)
+          }
+        })
+      }
     }
   }
 </script>

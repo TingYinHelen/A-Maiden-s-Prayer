@@ -20,12 +20,12 @@ router.get('/api/findArticle', (req, res)=>{
 })
 //获取文章列表
 router.get('/api/articleList', (req, res)=>{
-  article.find((err, articleList)=>{
+  db.Article.find((err, articleList)=>{
     if(err){
       console.error(err)
       return
     }else{
-      res.status(200).send(articleList)
+      res.status(200).send({articleList})
     }
   })
 })
