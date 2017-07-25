@@ -2,10 +2,9 @@
   <div class="fairy-article-detail">
     <div class="fairy-article-date">July 17, 2017</div>
     <div class="fairy-article-content">
-      <h4>MEOW</h4>
+      <h4>{{title}}</h4>
       <article class="">
-        How cute are these cushy kitties! How cute are these cushy kitties! How cute are these cushy kitties! How cute are these cushy kitties!How cute are these cushy kitties!
-        <img src="static/images/avatar.png">
+        {{content}}
       </article>
     </div>
     <div class="fairy-comment">
@@ -76,13 +75,32 @@
     },
     data(){
       return {
-        showComment: false
+        showComment: false,
+        title: '',
+        content: '',
+      }
+    },
+    created(){
+      this.fetchData()
+    },
+    methods: {
+      fetchData(){
+        const articleId = this.$route.params.article
+        this.$http.get(`/api/findArticle?articleId=${articleId}`)
+                  .then(res=>{
+                    if(res.status == 200){
+                      Object.assign(this.$data, res.body)
+                    }else{
+                      console.error('返回出错');
+                    }
+                  })
       }
     }
   }
 </script>
 <style lang="less">
   .fairy-comment{
+    margin-top: 20px;
     h4{
       color: #EE6FA1;
     }

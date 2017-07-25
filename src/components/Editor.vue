@@ -61,8 +61,8 @@
             .then(res=>{
               if(res.status == 200){
                 const username = localStorage.getItem('userName')
-                const title = this.contentTitle
-                this.$router.push({path: `/${username}/${title}`})
+                const {articleId} = res.body
+                this.$router.push({path: `/${username}/${articleId}`})
               }
             })
       }

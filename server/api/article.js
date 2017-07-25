@@ -6,8 +6,17 @@ const db = require('../db/db')
 router.post('/api/createArticle', (req, res)=>{
   const {title, content} = req.body
   // console.log(title, content)
-  new db.Article({title, content}).save()
-  res.status(200).send('save success!')
+  new db.Article({title, content}).save().then((product)=>{
+    res.status(200).send({articleId: product._id})
+  })
+})
+//查询文章
+router.get('/api/findArticle', (req, res)=>{
+  const { articleId } = req.query
+  db.Article.findOne({_id: articleId}, (err, doc)=>{
+    const {title, content} = doc
+    res.status(200).send({title, content})
+  })
 })
 //获取文章列表
 router.get('/api/articleList', (req, res)=>{
