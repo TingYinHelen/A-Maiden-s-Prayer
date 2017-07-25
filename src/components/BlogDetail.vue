@@ -3,9 +3,7 @@
     <div class="fairy-article-date">July 17, 2017</div>
     <div class="fairy-article-content">
       <h4>{{title}}</h4>
-      <article class="">
-        {{content}}
-      </article>
+      <article v-html="mdHtml"></article>
     </div>
     <div class="fairy-comment">
       <h4>Leave a Comment</h4>
@@ -68,6 +66,24 @@
 <script>
   import Avatar from './Avatar'
   import CommentList from './CommentList'
+  import marked from 'marked'
+  import hljs from 'highlight.js'
+  
+  marked.setOptions({
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value
+    },
+    sanitize: true
+  })
+  //自定义markdown样式
+  const renderer = new marked.Renderer()
+  renderer.heading = function (text, level) {
+      return `<h${level} class="hashTitle">${text}</h${level}>`
+  }
+  renderer.paragraph = text => {
+    return `<p class="fariy-edit-content">${text}</p>`
+  }
+  
   export default{
     components: {
       Avatar,
@@ -78,6 +94,13 @@
         showComment: false,
         title: '',
         content: '',
+      }
+    },
+    computed: {
+      mdHtml: {
+        get(){
+          return marked(this.content, { renderer: renderer })
+        }
       }
     },
     created(){

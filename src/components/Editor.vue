@@ -31,11 +31,7 @@
   renderer.paragraph = text => {
     return `<p class="fariy-edit-content">${text}</p>`
   }
-  
-  
-  
-  
-  
+    
   export default{
     data(){
       return {
