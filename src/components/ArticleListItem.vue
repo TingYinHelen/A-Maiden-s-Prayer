@@ -24,7 +24,7 @@
     methods: {
       toDetail(){
         const {username, _id} = this.item
-        this.$router.replace({path: `${username}/${_id}`})
+        this.$router.push({path: `${username}/${_id}`})
       }
     }
   }

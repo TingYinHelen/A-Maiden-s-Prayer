@@ -6,7 +6,7 @@
         <div class="fairy-center">
           <h4>Fairy</h4>
           <section class="header-right">
-            <template v-if="userName">
+            <template v-if="username">
               <div>
                 <Avatar :width="40"></Avatar>
               </div>
@@ -30,6 +30,7 @@
 </template>
 <script>
   import Avatar from './Avatar'
+  import { mapState } from 'vuex'
   export default{
     components: {
       Avatar
@@ -39,6 +40,12 @@
         userName: window.localStorage.getItem('userName')
       }
     },
+    computed: {
+      username(){
+        return this.$store.state.username
+      }
+    }
+    
   }
 </script>
 <style lang="less">

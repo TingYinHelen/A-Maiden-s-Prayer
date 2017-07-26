@@ -6,8 +6,8 @@
       <img src="static/images/avatar.png">
     </div>
     <ul class="fairy-sign-out">
-      <li @click="signOut">Sign out</li>
       <li @click="toPersonal">Your profile</li>
+      <li @click="signOut">Sign out</li>
     </ul>
   </div>
 </template>
@@ -27,6 +27,7 @@
       },
       signOut(){
         localStorage.removeItem('userName')
+        this.$store.dispatch('saveUserName', '')
         this.$router.replace('/home')
       }
     }

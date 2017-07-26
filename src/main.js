@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import Element from 'element-ui'
+import store from './store'
 import 'element-ui/lib/theme-default/index.css'
 
 import 'static/font.css'
@@ -19,6 +20,7 @@ Vue.use(Element)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
