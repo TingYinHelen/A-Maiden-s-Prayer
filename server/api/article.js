@@ -6,7 +6,12 @@ const db = require('../db/db')
 router.post('/api/createArticle', (req, res)=>{
   const {title, content, username} = req.body
   new db.Article({title, content, username}).save().then((product)=>{
-    res.status(200).send({articleId: product._id})
+    db.User.findOne({username: product.username}, (err, doc)=>{
+      doc.article.push(product._id)
+      doc.save().then(()=>{
+        res.status(200).send({articleId: product._id})
+      })
+    })
   })
 })
 //查询文章
@@ -19,14 +24,24 @@ router.get('/api/findArticle', (req, res)=>{
 })
 //获取文章列表
 router.get('/api/articleList', (req, res)=>{
-  db.Article.find((err, articleList)=>{
-    if(err){
-      console.error(err)
-      return
-    }else{
-      res.status(200).send({articleList})
-    }
-  })
+  const { username } = req.query
+  if(username){
+    db.User.findOne({username})
+           .populate({path: 'article'})
+           .exec((err, article)=>{
+             res.status(200).send({articleList: article.article})
+           })
+  }else{
+    db.Article.find((err, articleList)=>{
+      if(err){
+        console.error(err)
+        return
+      }else{
+        res.status(200).send({articleList})
+      }
+    })
+  }
+  
 })
 
 

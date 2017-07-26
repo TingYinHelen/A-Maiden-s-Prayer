@@ -20,9 +20,16 @@
     created(){
       this.fetchData()
     },
+    watch: {
+      '$route'(val){
+        const username = this.$route.params ? this.$route.params.username : ''
+        this.fetchData(username)
+      }
+    },
     methods: {
-      fetchData(){
-        this.$http.get('/api/articleList').then(res=>{
+      fetchData(username = ''){
+        console.log(username)
+        this.$http.get(`/api/articleList?username=${username}`).then(res=>{
           if(res.status == 200){
             Object.assign(this.$data, res.body)
           }

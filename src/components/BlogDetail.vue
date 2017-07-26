@@ -114,7 +114,7 @@
                     if(res.status == 200){
                       Object.assign(this.$data, res.body)
                     }else{
-                      console.error('返回出错');
+                      console.error('返回出错')
                     }
                   })
       }
