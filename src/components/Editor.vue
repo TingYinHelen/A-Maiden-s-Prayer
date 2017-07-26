@@ -53,7 +53,10 @@
       },
       submitAriticle(){
         const vm = this
-        this.$http.post('/api/createArticle', {title: this.contentTitle, content: this.mdContent})
+        this.$http.post('/api/createArticle', {
+          title: this.contentTitle, 
+          content: this.mdContent, 
+          username: localStorage.userName})
             .then(res=>{
               if(res.status == 200){
                 const username = localStorage.getItem('userName')

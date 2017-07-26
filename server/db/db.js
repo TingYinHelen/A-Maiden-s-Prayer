@@ -1,21 +1,24 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-//存储文章
-const ArticleSchema = new Schema(
-  {
-    title: String,
-    content: String
-  }
-)
-
 //用户注册
 const UserSchema = new Schema(
   {
     username: String,
-    password: String
+    password: String,
+    article: [{type: Schema.Types.ObjectId, ref: 'Article'}]
   }
 )
+//存储文章
+const ArticleSchema = new Schema(
+  {
+    title: String,
+    content: String,
+    username: { type: String, ref: 'User'}
+  }
+)
+
+
 const Models = {
   User: mongoose.model('User', UserSchema),
   Article: mongoose.model('Article', ArticleSchema)

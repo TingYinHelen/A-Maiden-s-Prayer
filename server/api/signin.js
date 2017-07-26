@@ -7,6 +7,8 @@ router.post('/api/signin', (req, res)=>{
     if(err){
       console.error(err)
     }else if(doc && doc.password == req.body.password){
+      console.log(doc
+      )
       res.status(200).send({
         username: doc.username,
         id: doc._id

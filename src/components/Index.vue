@@ -16,12 +16,11 @@
               <router-link to="/signin">Sign In</router-link>
               <router-link to="/signup">Sign Up</router-link>
             </template>
-            
           </section>
         </div>
       </div>
       <nav class="fairy-center fairy-nav">
-        <a href="javascript:;" @click="toHome">Home</a>
+        <router-link to="/home">Home</router-link>
       </nav>
       <div class="fairy-nav-bottom"></div>
     </header>
@@ -40,16 +39,6 @@
         userName: window.localStorage.getItem('userName')
       }
     },
-    methods: {
-      toHome(){
-        const username = localStorage.getItem('userName')
-        if(username){
-          this.$router.replace({path: username, params: {username}})
-        }else{
-          this.$router.push('/')
-        }
-      }
-    }
   }
 </script>
 <style lang="less">

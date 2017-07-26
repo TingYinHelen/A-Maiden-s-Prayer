@@ -16,9 +16,11 @@ export default new Router({
     { path: '/signup', name: 'signup', component: SignUp },
     { path: '/', name: 'Index', component: Index,
       children: [
+        { path: '', redirect: 'home'},
+        { path: 'home', name: 'home', component: ArticleList},
         { path: 'editor', name: 'editor', component: Editor},
-        { path: ':username?', name: 'home', component: ArticleList},
-        { path: ':article?', name: 'blogarticle', component: BlogDetail},
+        { path: ':username?', name: 'personal', component: ArticleList},
+        // { path: ':article?', name: 'blogarticle', component: BlogDetail},
         { path: ':username?/:article?', name: 'blogdetail', component: BlogDetail},
       ]
     },

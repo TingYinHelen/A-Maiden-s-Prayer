@@ -6,7 +6,7 @@
     <div class="article-content">
       <h4>{{item.title}}</h4>
       <article>{{item.content}}</article>
-      <a href="javascript:;" @click="toDetail(item._id)">More</a>
+      <a href="javascript:;" @click="toDetail">More</a>
       <!-- :to="{path: item.title, params: {article: item.title}}" -->
     </div>
   </li>
@@ -22,13 +22,9 @@
       }
     },
     methods: {
-      toDetail(article){
-        const username = this.$route.params.username
-        if(username){
-          this.$router.push({path:`${username}/${article}`, params: {username, article}})
-        }else{
-          this.$router.push({path:article, params: {article}})
-        }
+      toDetail(){
+        const {username, _id} = this.item
+        this.$router.replace({path: `${username}/${_id}`})
       }
     }
   }

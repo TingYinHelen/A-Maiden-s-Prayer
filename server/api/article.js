@@ -4,9 +4,8 @@ const db = require('../db/db')
 
 //新建文章
 router.post('/api/createArticle', (req, res)=>{
-  const {title, content} = req.body
-  // console.log(title, content)
-  new db.Article({title, content}).save().then((product)=>{
+  const {title, content, username} = req.body
+  new db.Article({title, content, username}).save().then((product)=>{
     res.status(200).send({articleId: product._id})
   })
 })
