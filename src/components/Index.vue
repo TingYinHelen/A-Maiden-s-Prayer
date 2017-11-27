@@ -40,6 +40,9 @@
         userName: window.localStorage.getItem('userName')
       }
     },
+    created(){
+      
+    },
     computed: {
       username(){
         return this.$store.state.username

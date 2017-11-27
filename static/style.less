@@ -1,9 +1,12 @@
 @import './highlight';
+@color-button: #EE6FA1;
+@color-button-hover: lighten(@color-button, 10%);
 *{
    margin:0;
    padding:0;
    font-family: 'microsoft yahei',Verdana,Arial,Helvetica,sans-serif;
    -webkit-text-size-adjust:none;
+   box-sizing: border-box;
 }
 a,a:focus{ 
   text-decoration:none;
@@ -111,9 +114,13 @@ ul,li,ol{ list-style: none; margin-bottom: 0; }
     height: 30px;
     text-align: center;
     line-height: 30px;
-    background: #F8C6DA;
+    background: @color-button;
     color: #fff;
     font-size: 14px;
+    border-radius: 4px;
+  }
+  a:hover{
+    background: @color-button-hover;
   }
 }
 /*
@@ -182,9 +189,14 @@ ul,li,ol{ list-style: none; margin-bottom: 0; }
     .el-button{
       width: 100%;
       margin-top: 20px;
-      background: #F8C6DA;
+      padding: 10px 15px;
+      background: @color-button;
       border: 0;
       color: #fff;
+    }
+    
+    .el-button:hover{
+      background: @color-button-hover;
     }
   }
 }

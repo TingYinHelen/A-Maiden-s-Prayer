@@ -28,7 +28,6 @@
     },
     methods: {
       fetchData(username = ''){
-        console.log(username)
         this.$http.get(`/api/articleList?username=${username}`).then(res=>{
           if(res.status == 200){
             Object.assign(this.$data, res.body)

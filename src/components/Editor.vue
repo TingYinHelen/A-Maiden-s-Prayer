@@ -10,7 +10,13 @@
       </div>
     </div>
     <el-input class="fairy-editor-title" v-model="contentTitle"></el-input>
-    <el-input type="textarea" v-if="isMarked" v-model="mdContent"></el-input>
+    <textarea class="fairy-editor" 
+      v-if="isMarked" 
+      v-model="mdContent" 
+      resize="none"
+      @dragover="allowDrop(event)"
+      ></textarea>
+    <!-- <el-input type="textarea" v-if="isMarked" v-model="mdContent"></el-input> -->
     <div v-else class="fairy-preview" v-html="mdHtml"></div>
   </div>
 </template>
@@ -64,7 +70,12 @@
                 this.$router.push({path: `/${username}/${articleId}`})
               }
             })
-      }
+      },
+      allowDrop(event){
+        console.log(123)
+        console.log(event)
+        event.preventDefault()
+      },
     }
   }
 </script>
@@ -99,5 +110,13 @@
   }
   .fairy-editor-title{
     margin-bottom: 20px;
+  }
+  .fairy-editor{
+    width: 100%;
+    border: 1px solid #bfcbd9;
+    border-radius: 4px;
+    line-height: 25px;
+    padding: 5px;
+    min-height: 600px;
   }
 </style>
